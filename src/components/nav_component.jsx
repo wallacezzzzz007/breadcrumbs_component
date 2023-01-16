@@ -10,7 +10,7 @@ class NavComponent extends Component {
         <nav aria-label="breadcrumb" className="m-2 lg">
           <ol className="breadcrumb">{this.getPreviousLists(nowKey)}</ol>
         </nav>
-        <div className="content">
+        <div className="container">
           {type === "dir" ? (
             this.getContentLists(nowKey, contents)
           ) : (
@@ -26,7 +26,10 @@ class NavComponent extends Component {
     for (let index = 0; index < contentsList.length; index++) {
       rows.push(
         <React.Fragment key={index}>
-          <Link to={nowKey + "/" + contentsList[index]} className="m-2">
+          <Link
+            to={nowKey + "/" + contentsList[index]}
+            className="m-2 contents"
+          >
             {contentsList[index]}
           </Link>
         </React.Fragment>
