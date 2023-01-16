@@ -7,7 +7,7 @@ This is a component showing how to integrate breadcrumb with react-router to cre
 - The main portion of the page should display the contents of the current directory, or "THIS IS FILE: {filename}" if the path is a file. Clicking on any of the files or folders in this portion of the page should take you to that file.
 - Using a single endpoint: GET /path/{mypath} to return the data about the given path. For directories, there only includes direct children, not the full subtree.
 
-[![img]]
+![img](https://github.com/wallacezzzzz007/breadcrumbs_component/blob/master/images/breadcrumbs.png)
 
 # Testing
 
