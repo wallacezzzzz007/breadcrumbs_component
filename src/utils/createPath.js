@@ -4,40 +4,26 @@ import RootPage from "../components/root_page";
 
 function CreatePathMap(dataStructure) {
   const pathMap = new Map();
-  if (Object.keys(dataStructure.children).length) {
-    const start = "";
-    const pre = "";
-    PathCreateRecursion(start, dataStructure, pathMap, pre);
-  } else {
-    const key_pre = { key: "root", previous: null, type: null };
-    pathMap.set(`/`, key_pre);
-  }
+  const start = "";
+  PathCreateRecursion(start, dataStructure, pathMap);
   return pathMap;
 }
 
-function PathCreateRecursion(start, data, map, pre) {
+function PathCreateRecursion(start, data, map) {
   if (data.type !== "dir" || Object.keys(data.children).length === 0) {
     return;
   }
   for (const [key, value] of Object.entries(data.children)) {
-    const key_pre = [key, pre, value.type];
-    map.set(`${start}/${key}`, key_pre);
-    let temp = `${start}/${key}`;
-    PathCreateRecursion(temp, value, map, key);
-  }
-}
-
-function getContents(map, keyName, path) {
-  const contents = [];
-  for (const [key, value] of map) {
-    if (
-      value[1] == keyName &&
-      key.slice(0, -(value[0].length + 1)).valueOf() == path.valueOf()
-    ) {
-      contents.push([key, value[0]]);
+    let key_pre2 = [];
+    if (value.type === "dir") {
+      key_pre2 = [key, Object.keys(value.children), value.type];
+    } else {
+      key_pre2 = [key, "", value.type];
     }
+    map.set(`${start}/${key}`, key_pre2);
+    let temp = `${start}/${key}`;
+    PathCreateRecursion(temp, value, map);
   }
-  return contents;
 }
 
 export function CreateRouter(data) {
@@ -54,7 +40,7 @@ export function CreateRouter(data) {
       path: key,
       element: (
         <NavComponent
-          contents={getContents(pathMap, value[0], key)}
+          contents={value[1]}
           nowKey={key}
           keyName={value[0]}
           type={value[2]}

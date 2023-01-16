@@ -12,7 +12,7 @@ class NavComponent extends Component {
         </nav>
         <div className="content">
           {type === "dir" ? (
-            this.getContentLists(contents, keyName, nowKey)
+            this.getContentLists(nowKey, contents)
           ) : (
             <h1>This is File: {keyName}.</h1>
           )}
@@ -21,13 +21,15 @@ class NavComponent extends Component {
     );
   }
 
-  getContentLists(contentsList) {
+  getContentLists(nowKey, contentsList) {
     const rows = [];
     for (let index = 0; index < contentsList.length; index++) {
       rows.push(
-        <Link to={contentsList[index][0]} className="m-2">
-          {contentsList[index][1]}
-        </Link>
+        <React.Fragment key={index}>
+          <Link to={nowKey + "/" + contentsList[index]} className="m-2">
+            {contentsList[index]}
+          </Link>
+        </React.Fragment>
       );
     }
     return rows;
