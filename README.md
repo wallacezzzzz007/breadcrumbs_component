@@ -1,4 +1,4 @@
-# Dynamic breadcrumb integrated
+# React Breadcrumbs Component
 
 This is a component showing how to integrate breadcrumb with react-router to create dynamic breadcrumb.
 
