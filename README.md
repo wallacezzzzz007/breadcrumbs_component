@@ -13,3 +13,5 @@ Here is an example to show the location at: /home/myname/projects/mysupersecretp
 # Testing
 
 Please replace data in data.js, then run 'npm start'
+
+(if any string contains space, please replace space with '-')
