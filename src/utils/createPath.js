@@ -1,6 +1,7 @@
 import NavComponent from "../components/nav_component";
 import ErrorPage from "../components/error-page";
 import RootPage from "../components/root_page";
+import _ from "lodash";
 
 function CreatePathMap(dataStructure) {
   const pathMap = new Map();
@@ -37,7 +38,7 @@ export function CreateRouter(data) {
   const pathMap = CreatePathMap(data);
   for (const [key, value] of pathMap) {
     const path = {
-      path: key,
+      path: _.replace(key, " ", "-"),
       element: (
         <NavComponent
           contents={value[1]}

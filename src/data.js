@@ -7,7 +7,7 @@ const root = {
         myname: {
           type: "dir",
           children: {
-            "filea.txt": {
+            "file a.txt": {
               type: "file",
             },
             "fileb.txt": {
@@ -48,6 +48,19 @@ const root = {
                       children: {},
                     },
                   },
+                },
+              },
+            },
+          },
+        },
+        projects: {
+          type: "dir",
+          children: {
+            mysupersecretproject: {
+              type: "dir",
+              children: {
+                mysupersecretfile: {
+                  type: "file",
                 },
               },
             },

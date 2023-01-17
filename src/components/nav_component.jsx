@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import _ from "lodash";
 
 class NavComponent extends Component {
   state = {};
@@ -27,7 +28,7 @@ class NavComponent extends Component {
       rows.push(
         <React.Fragment key={index}>
           <Link
-            to={nowKey + "/" + contentsList[index]}
+            to={_.replace(nowKey + "/" + contentsList[index], " ", "-")}
             className="m-2 contents"
           >
             {contentsList[index]}
@@ -51,13 +52,13 @@ class NavComponent extends Component {
             aria-current="page"
             key={nowPath + index}
           >
-            <Link to={nowPath}>{tempNowKey[index]}</Link>
+            <Link to={_.replace(nowPath, " ", "-")}>{tempNowKey[index]}</Link>
           </li>
         );
       } else {
         rows.push(
           <li className="breadcrumb-item" key={nowPath + index}>
-            <Link to={nowPath}>{tempNowKey[index]}</Link>
+            <Link to={_.replace(nowPath, " ", "-")}>{tempNowKey[index]}</Link>
           </li>
         );
       }
